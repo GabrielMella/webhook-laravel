@@ -1,0 +1,26 @@
+POST http://localhost:8082/api/payment
+Accept: application/json
+Content-Type: application/json
+
+{
+    "payment_id": "ABC123456789",
+    "status": "success",
+    "description": "Ecommerce payment"
+}
+
+###
+
+POST http://localhost:8081/api/paystack/webhook
+Content-Type: application/json
+x-paystack-signature: webhook-laravel
+
+{
+    "event": "charge.success",
+    "data": {
+        "id": 12,
+        "amount": 10000,
+        "currency": "EUR",
+        "status": "success",
+        "reference": "ABC123456789"
+    }
+}
