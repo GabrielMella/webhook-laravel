@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,6 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Model::unguard();
+        // Mass assignment protection is intentionally kept enabled.
+        // Define $fillable or $guarded on each Eloquent model instead
+        // of globally unguarding models via Model::unguard(), which
+        // would expose the application to mass assignment vulnerabilities.
     }
 }

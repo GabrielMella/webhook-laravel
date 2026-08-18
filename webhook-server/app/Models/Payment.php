@@ -13,4 +13,15 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  */
 class Payment extends Model
-{}
+{
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'payment_id',
+        'description',
+        'status',
+    ];
+}
