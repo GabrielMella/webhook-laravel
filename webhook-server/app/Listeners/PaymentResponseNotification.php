@@ -15,7 +15,7 @@ class PaymentResponseNotification implements ShouldQueue
         Log::info('Enviando dados', [$event->payment_id]);
 
         WebhookCall::create()
-            ->url('http://127.0.0.1:8081/api/paystack/webhook')
+            ->url(config('services.webhook_client.url'))
             ->payload([
                 'id' => 12,
                 'amount' => 10000,
